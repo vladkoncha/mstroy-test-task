@@ -105,10 +105,11 @@ export class TreeStore {
     }
 
     const parentsChain = [];
-    do {
+    currentItem = this.itemsMap.get(currentItem.parent)?.item;
+    while (currentItem) {
       parentsChain.push(currentItem);
       currentItem = this.itemsMap.get(currentItem.parent)?.item;
-    } while (currentItem);
+    };
 
     return parentsChain;
   }
